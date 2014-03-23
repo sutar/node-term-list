@@ -39,6 +39,7 @@ function List(opts) {
   this.markerLength = opts.markerLength || this.marker.length;
   this.onkeypress = this.onkeypress.bind(this);
   this.barText = '';
+  this.topText= '';
 }
 
 /**
@@ -149,7 +150,7 @@ List.prototype.draw = function(){
   var y = 0;
   ctx.clear();
   ctx.save();
-  ctx.translate(3, 3);
+  ctx.translate(3, 4);
   this.items.forEach(function(item){
     if (self.selected == item.id) {
       ctx.fillText(self.marker + item.label, 0, y++);
@@ -159,11 +160,12 @@ List.prototype.draw = function(){
     }
   });
   ctx.restore();
+  self.drawTopBar();
   self.drawStatusBar();
 };
 
 /**
- * Draw botton status bar
+ * Draw bottom status bar
  *
  * @api public
  */
@@ -177,6 +179,21 @@ List.prototype.drawStatusBar = function() {
 }
 
 /**
+ * Draw top bar
+ *
+ * @api public
+ */
+
+List.prototype.drawTopBar = function() {
+  ctx.save();
+  ctx.translate(5, 2);
+  ctx.fillText(this.topText, 0, 0);
+  ctx.translate(0, 20);
+  ctx.write('\n');
+  ctx.restore();
+}
+
+/**
  * Set status bar text
  *
  * @api public
@@ -186,6 +203,18 @@ List.prototype.setBarText = function(text) {
   this.barText = text;
   this.draw();
 }
+
+/**
+ * Set top bar text
+ *
+ * @api public
+ */
+
+List.prototype.setTopText = function(text) {
+  this.topText = text;
+  this.draw();
+}
+
 /**
  * Select the previous item if any.
  *

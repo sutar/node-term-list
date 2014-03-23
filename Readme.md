@@ -5,8 +5,9 @@ A customized `term-list` with status bar feature.
 ## Usage
 
 ```js
-var List = require('term-list');
+var List = require('term-list-bar');
 list.setBarText = 'status bar text here';
+list.setTopText = 'top bar text here';
 ```
 
 ## Thanks
