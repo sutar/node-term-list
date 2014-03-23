@@ -1,7 +1,7 @@
 {
-  "name": "term-list",
-  "version": "0.2.1",
-  "description": "interactive terminal lists",
+  "name": "term-list-bar",
+  "version": "0.0.1",
+  "description": "interactive terminal lists with status bar",
   "keywords": [
     "ansi",
     "term",
@@ -13,10 +13,11 @@
   "license": "MIT",
   "dependencies": {
     "term-canvas": "0.0.5",
-    "keypress": "~0.2.1"
+    "keypress": "~0.2.1",
+    "term-list": "0.2.1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/visionmedia/node-term-list.git"
+    "url": "https://github.com/sutar/node-term-list.git"
   }
 }

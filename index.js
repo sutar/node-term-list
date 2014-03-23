@@ -38,6 +38,7 @@ function List(opts) {
   this.marker = opts.marker || '› ';
   this.markerLength = opts.markerLength || this.marker.length;
   this.onkeypress = this.onkeypress.bind(this);
+  this.barText = '';
 }
 
 /**
@@ -157,10 +158,33 @@ List.prototype.draw = function(){
       ctx.fillText(pad + item.label, 0, y++);
     }
   });
-  ctx.write('\n\n');
   ctx.restore();
+  self.drawStatusBar();
 };
 
+/**
+ * Draw botton status bar
+ *
+ * @api public
+ */
+
+List.prototype.drawStatusBar = function() {
+  ctx.save();
+  ctx.translate(5, 20);
+  ctx.fillText(this.barText, 0, 0);
+  ctx.write('\n\n     ')
+  ctx.restore();
+}
+
+/**
+ * Set status bar text
+ *
+ * @api public
+ */
+
+List.prototype.setBarText = function(text) {
+  this.barText = text;
+}
 /**
  * Select the previous item if any.
  *
