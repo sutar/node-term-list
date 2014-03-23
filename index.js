@@ -172,7 +172,7 @@ List.prototype.drawStatusBar = function() {
   ctx.save();
   ctx.translate(5, 20);
   ctx.fillText(this.barText, 0, 0);
-  ctx.write('\n\n     ')
+  ctx.write('\n\n')
   ctx.restore();
 }
 
@@ -184,6 +184,7 @@ List.prototype.drawStatusBar = function() {
 
 List.prototype.setBarText = function(text) {
   this.barText = text;
+  this.draw();
 }
 /**
  * Select the previous item if any.
