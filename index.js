@@ -35,6 +35,7 @@ function List(opts) {
   opts = opts || {};
   this.items = [];
   this.map = {};
+  this.yOffset = 0;
   this.marker = opts.marker || '› ';
   this.markerLength = opts.markerLength || this.marker.length;
   this.onkeypress = this.onkeypress.bind(this);
@@ -102,6 +103,13 @@ List.prototype.remove = function(id){
 };
 
 /**
+ * Remove all items
+ */
+List.prototype.removeAll = function() {
+  this.items = [];
+  this.draw();
+}
+/**
  * Return item at `i`.
  *
  * @param {Number} i
@@ -159,6 +167,7 @@ List.prototype.draw = function(){
       ctx.fillText(pad + item.label, 0, y++);
     }
   });
+  self.yOffset = y;
   ctx.restore();
   self.drawTopBar();
   self.drawStatusBar();
@@ -171,9 +180,10 @@ List.prototype.draw = function(){
  */
 
 List.prototype.drawStatusBar = function() {
+  var self = this;
   ctx.save();
-  ctx.translate(5, 20);
-  ctx.fillText(this.barText, 0, 0);
+  ctx.translate(5, self.yOffset + 5);
+  ctx.fillText(self.barText, 0, 0);
   ctx.write('\n\n')
   ctx.restore();
 }
@@ -185,9 +195,10 @@ List.prototype.drawStatusBar = function() {
  */
 
 List.prototype.drawTopBar = function() {
+  var self = this;
   ctx.save();
   ctx.translate(5, 2);
-  ctx.fillText(this.topText, 0, 0);
+  ctx.fillText(self.topText, 0, 0);
   ctx.translate(0, 20);
   ctx.write('\n');
   ctx.restore();
@@ -201,7 +212,6 @@ List.prototype.drawTopBar = function() {
 
 List.prototype.setBarText = function(text) {
   this.barText = text;
-  this.draw();
 }
 
 /**
@@ -212,7 +222,6 @@ List.prototype.setBarText = function(text) {
 
 List.prototype.setTopText = function(text) {
   this.topText = text;
-  this.draw();
 }
 
 /**
