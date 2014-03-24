@@ -104,11 +104,15 @@ List.prototype.remove = function(id){
 
 /**
  * Remove all items
+ *
+ * @api public
  */
+
 List.prototype.removeAll = function() {
   this.items = [];
   this.draw();
 }
+
 /**
  * Return item at `i`.
  *

@@ -13,8 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "term-canvas": "0.0.5",
-    "keypress": "~0.2.1",
-    "term-list": "0.2.1"
+    "keypress": "~0.2.1"
   },
   "repository": {
     "type": "git",
